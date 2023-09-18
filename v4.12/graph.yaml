@@ -1,11 +1,7 @@
----
 schema: olm.package
 name: kubevirt-hyperconverged
 defaultChannel: stable
 ---
-schema: olm.channel
-name: stable
-package: kubevirt-hyperconverged
 entries:
   - name: kubevirt-hyperconverged-operator.v4.10.5
     replaces: kubevirt-hyperconverged-operator.v4.10.4
@@ -13,27 +9,28 @@ entries:
       - kubevirt-hyperconverged-operator.v4.9.5
   - name: kubevirt-hyperconverged-operator.v4.11.0
     replaces: kubevirt-hyperconverged-operator.v4.10.5
-    skipRange: ">=4.10.6 <4.11.0"
+    skipRange: '>=4.10.6 <4.11.0'
   - name: kubevirt-hyperconverged-operator.v4.11.1
     replaces: kubevirt-hyperconverged-operator.v4.11.0
   - name: kubevirt-hyperconverged-operator.v4.12.0
     replaces: kubevirt-hyperconverged-operator.v4.11.1
-    skipRange: ">=4.11.2 <4.12.0"
+    skipRange: '>=4.11.2 <4.12.0'
   - name: kubevirt-hyperconverged-operator.v4.12.1
     replaces: kubevirt-hyperconverged-operator.v4.12.0
   - name: kubevirt-hyperconverged-operator.v4.12.2
     replaces: kubevirt-hyperconverged-operator.v4.12.1
-  - name: kubevirt-hyperconverged-operator.v4.13.0
+  - name: kubevirt-hyperconverged-operator.v4.12.3
     replaces: kubevirt-hyperconverged-operator.v4.12.2
-    skipRange: ">=4.12.3 <4.13.0"
-  - name: kubevirt-hyperconverged-operator.v4.13.1
-    replaces: kubevirt-hyperconverged-operator.v4.13.0
-  - name: kubevirt-hyperconverged-operator.v4.13.2
-    replaces: kubevirt-hyperconverged-operator.v4.13.1
-    skips:
-      - kubevirt-hyperconverged-operator.v4.12.4
-  - name: kubevirt-hyperconverged-operator.v4.13.3
-    replaces: kubevirt-hyperconverged-operator.v4.13.2
+    skipRange: '>=4.11.3 <4.12.0'
+  - name: kubevirt-hyperconverged-operator.v4.12.4
+    replaces: kubevirt-hyperconverged-operator.v4.12.3
+  - name: kubevirt-hyperconverged-operator.v4.12.5
+    replaces: kubevirt-hyperconverged-operator.v4.12.4
+  - name: kubevirt-hyperconverged-operator.v4.12.6
+    replaces: kubevirt-hyperconverged-operator.v4.12.5
+name: stable
+package: kubevirt-hyperconverged
+schema: olm.channel
 ---
 schema: olm.bundle
 image: registry.redhat.io/container-native-virtualization/hco-bundle-registry@sha256:78d29f077193ab9b98bbc7a1d53f1cf6af69a8261d76aa2d3a2c279e34161c3c
@@ -54,13 +51,13 @@ schema: olm.bundle
 image: registry.redhat.io/container-native-virtualization/hco-bundle-registry@sha256:581e058e146557b463827571e4052461a613fb53759cb45de6230abfa85cc6f0
 ---
 schema: olm.bundle
-image: registry.redhat.io/container-native-virtualization/hco-bundle-registry-rhel9@sha256:60e89d7a99ff9f20e974430b802dd724a3bb6fa1e01e5a62daad98ac487b3063
+image: registry.redhat.io/container-native-virtualization/hco-bundle-registry@sha256:a81440dcdd457dfbd571e66aeb107391d23426b5b728dabfbc45dccaee4276e5
 ---
 schema: olm.bundle
-image: registry.redhat.io/container-native-virtualization/hco-bundle-registry-rhel9@sha256:d5446d7245fefff9f24ee02ad3857f19bf363023eb4c78847de0f393cf3627f5
+image: registry.redhat.io/container-native-virtualization/hco-bundle-registry@sha256:006bee10a9c9b0b88076a512caa824d5acbcf6611d62114969fa06ad04c1548e
 ---
 schema: olm.bundle
-image: registry.redhat.io/container-native-virtualization/hco-bundle-registry-rhel9@sha256:84b5fd4da869872180f49816068de6b9fd4a30caab352db79922b69874cb4fb8
+image: registry.redhat.io/container-native-virtualization/hco-bundle-registry@sha256:fdbd8e15ed4c3893bec71866c5bf37caca1e4cb9c021c77e72b48d28a7357215
 ---
 schema: olm.bundle
-image: registry.redhat.io/container-native-virtualization/hco-bundle-registry-rhel9@sha256:821913dc264e2779f0e7cb1fafc429463a64efe0f895d84ec1850937ac76c403
+image: registry.redhat.io/container-native-virtualization/hco-bundle-registry@sha256:d09f210fa79a5aa20fe647ec7fd84a95cf5db41568127fbb035b56deaef3d076
