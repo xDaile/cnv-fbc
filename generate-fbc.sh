@@ -108,6 +108,8 @@ case $cmd in
       exit 1
     fi
     opm alpha render-template basic "${frag}"/graph.yaml > "${frag}"/catalog/kubevirt-hyperconverged/catalog.yaml
+    # TODO: handle this
+    # sed -i 's|brew.registry.redhat.io/container-native-virtualization/hco-bundle-registry|registry.redhat.io/container-native-virtualization/hco-bundle-registry|g' "${frag}"/catalog/kubevirt-hyperconverged/catalog.yaml
   ;;
   "--comment-graph")
     frag=$2
@@ -117,7 +119,7 @@ case $cmd in
       exit 1
     fi
     sed -i "/# hco-bundle-registry v4\./d" "$frag"/graph.yaml
-    grep -E "registry.redhat.io/container-native-virtualization/hco-bundle-registry[-rhel9]*@sha256" "$frag"/graph.yaml | while read -r line ; do
+    grep -E "^image: [brew\.]*registry.redhat.io/container-native-virtualization/hco-bundle-registry[-rhel9]*@sha256" "$frag"/graph.yaml | while read -r line ; do
       image=${line/image: /}
       echo "Processing $image"
       url=$(skopeo inspect docker://"$image" | grep "\"url\": ")
