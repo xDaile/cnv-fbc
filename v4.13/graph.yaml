@@ -30,6 +30,8 @@ entries:
       - kubevirt-hyperconverged-operator.v4.12.4
   - name: kubevirt-hyperconverged-operator.v4.13.3
     replaces: kubevirt-hyperconverged-operator.v4.13.2
+  - name: kubevirt-hyperconverged-operator.v4.13.4
+    replaces: kubevirt-hyperconverged-operator.v4.13.3
 name: stable
 package: kubevirt-hyperconverged
 schema: olm.channel
@@ -73,3 +75,7 @@ image: registry.redhat.io/container-native-virtualization/hco-bundle-registry-rh
 schema: olm.bundle
 image: registry.redhat.io/container-native-virtualization/hco-bundle-registry-rhel9@sha256:821913dc264e2779f0e7cb1fafc429463a64efe0f895d84ec1850937ac76c403
 # hco-bundle-registry v4.13.3.rhel9-250
+---
+schema: olm.bundle
+image: registry.redhat.io/container-native-virtualization/hco-bundle-registry-rhel9@sha256:e507ac13769b706390e037493c58ab5036c31d6a1c3d8a349ae8afdec748399b
+# hco-bundle-registry v4.13.4.rhel9-226
