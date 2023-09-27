@@ -152,7 +152,8 @@ case $cmd in
     grep -E "^image: [brew\.]*registry.redhat.io/container-native-virtualization/hco-bundle-registry[-rhel9]*@sha256" "$frag"/graph.yaml | while read -r line ; do
       image=${line/image: /}
       echo "Processing $image"
-      url=$(${SKOPEO_CMD} inspect --no-tags "${AUTH_FILE}" docker://"$image" | grep "\"url\": ")
+      # shellcheck disable=SC2086
+      url=$(${SKOPEO_CMD} inspect --no-tags ${AUTH_FILE} docker://"$image" | grep "\"url\": ")
       tag1=${url/*\/images\/}
       tag=${tag1/\",/}
       sed -i "s|$image|$image\n# hco-bundle-registry $tag|g" "$frag"/graph.yaml
@@ -167,7 +168,8 @@ case $cmd in
       grep -E "^image: [brew\.]*registry.redhat.io/container-native-virtualization/hco-bundle-registry[-rhel9]*@sha256" "$frag"/graph.yaml | while read -r line ; do
         image=${line/image: /}
         echo "Processing $image"
-        url=$(${SKOPEO_CMD} inspect --no-tags "${AUTH_FILE}" docker://"$image" | grep "\"url\": ")
+	# shellcheck disable=SC2086
+        url=$(${SKOPEO_CMD} inspect --no-tags ${AUTH_FILE} docker://"$image" | grep "\"url\": ")
         tag1=${url/*\/images\/}
         tag=${tag1/\",/}
         sed -i "s|$image|$image\n# hco-bundle-registry $tag|g" "$frag"/graph.yaml
