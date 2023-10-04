@@ -3,6 +3,20 @@ name: kubevirt-hyperconverged
 defaultChannel: stable
 ---
 entries:
+  - name: kubevirt-hyperconverged-operator.v4.8.0
+    replaces: kubevirt-hyperconverged-operator.v2.6.5
+    skipRange: '>=2.6.6 <4.8.0'
+  - name: kubevirt-hyperconverged-operator.v4.8.1
+    replaces: kubevirt-hyperconverged-operator.v4.8.0
+  - name: kubevirt-hyperconverged-operator.v4.8.2
+    replaces: kubevirt-hyperconverged-operator.v4.8.1
+  - name: kubevirt-hyperconverged-operator.v4.9.0
+    replaces: kubevirt-hyperconverged-operator.v4.8.2
+    skipRange: '>=4.8.3 <4.9.0'
+  - name: kubevirt-hyperconverged-operator.v4.9.1
+    replaces: kubevirt-hyperconverged-operator.v4.9.0
+  - name: kubevirt-hyperconverged-operator.v4.9.2
+    replaces: kubevirt-hyperconverged-operator.v4.9.1
   - name: kubevirt-hyperconverged-operator.v4.10.0
     replaces: kubevirt-hyperconverged-operator.v4.9.2
     skipRange: '>=4.9.3 <4.10.0'
@@ -40,23 +54,35 @@ entries:
     replaces: kubevirt-hyperconverged-operator.v4.11.4
   - name: kubevirt-hyperconverged-operator.v4.11.6
     replaces: kubevirt-hyperconverged-operator.v4.11.5
-  - name: kubevirt-hyperconverged-operator.v4.8.0
-    replaces: kubevirt-hyperconverged-operator.v2.6.5
-    skipRange: '>=2.6.6 <4.8.0'
-  - name: kubevirt-hyperconverged-operator.v4.8.1
-    replaces: kubevirt-hyperconverged-operator.v4.8.0
-  - name: kubevirt-hyperconverged-operator.v4.8.2
-    replaces: kubevirt-hyperconverged-operator.v4.8.1
-  - name: kubevirt-hyperconverged-operator.v4.9.0
-    replaces: kubevirt-hyperconverged-operator.v4.8.2
-    skipRange: '>=4.8.3 <4.9.0'
-  - name: kubevirt-hyperconverged-operator.v4.9.1
-    replaces: kubevirt-hyperconverged-operator.v4.9.0
-  - name: kubevirt-hyperconverged-operator.v4.9.2
-    replaces: kubevirt-hyperconverged-operator.v4.9.1
+  - name: kubevirt-hyperconverged-operator.v4.11.7
+    replaces: kubevirt-hyperconverged-operator.v4.11.6
 name: stable
 package: kubevirt-hyperconverged
 schema: olm.channel
+---
+schema: olm.bundle
+image: registry.redhat.io/container-native-virtualization/hco-bundle-registry@sha256:d0aea69adbe85ba64ec810d203e5207ece6b29c4e0a54cc6b2291671b2f50572
+# hco-bundle-registry v4.8.0-451
+---
+schema: olm.bundle
+image: registry.redhat.io/container-native-virtualization/hco-bundle-registry@sha256:043b236fe075f38a520882495505aca66f6b32e404afa8071aa3a271c1d6ce29
+# hco-bundle-registry v4.8.1-18
+---
+schema: olm.bundle
+image: registry.redhat.io/container-native-virtualization/hco-bundle-registry@sha256:45f6acece083699ca9a44cbd17aa5560b704847eb43b6a7060caf7fbf9e923da
+# hco-bundle-registry v4.8.2-17
+---
+schema: olm.bundle
+image: registry.redhat.io/container-native-virtualization/hco-bundle-registry@sha256:2d7b4f8c04d4562029587c4b8e45d4b911ea4e3590c58bf2ecb2b7b238fd0778
+# hco-bundle-registry v4.9.0-266
+---
+schema: olm.bundle
+image: registry.redhat.io/container-native-virtualization/hco-bundle-registry@sha256:70e5de00883d02a93d59cbd6268995bf5b3c3116279ab868c89c7dc198a288a4
+# hco-bundle-registry v4.9.1-52
+---
+schema: olm.bundle
+image: registry.redhat.io/container-native-virtualization/hco-bundle-registry@sha256:c5da47b16fb1dbfb9c346d3717f471475c6d8d8b7ea260b1aca9f5569d53f26a
+# hco-bundle-registry v4.9.2-27
 ---
 schema: olm.bundle
 image: registry.redhat.io/container-native-virtualization/hco-bundle-registry@sha256:35b29e8eb48d9818a1217d5b89e4dcb7a900c5c5e6ae3745683813c5708c86e9
@@ -111,25 +137,5 @@ image: registry.redhat.io/container-native-virtualization/hco-bundle-registry@sh
 # hco-bundle-registry v4.11.6-28
 ---
 schema: olm.bundle
-image: registry.redhat.io/container-native-virtualization/hco-bundle-registry@sha256:d0aea69adbe85ba64ec810d203e5207ece6b29c4e0a54cc6b2291671b2f50572
-# hco-bundle-registry v4.8.0-451
----
-schema: olm.bundle
-image: registry.redhat.io/container-native-virtualization/hco-bundle-registry@sha256:043b236fe075f38a520882495505aca66f6b32e404afa8071aa3a271c1d6ce29
-# hco-bundle-registry v4.8.1-18
----
-schema: olm.bundle
-image: registry.redhat.io/container-native-virtualization/hco-bundle-registry@sha256:45f6acece083699ca9a44cbd17aa5560b704847eb43b6a7060caf7fbf9e923da
-# hco-bundle-registry v4.8.2-17
----
-schema: olm.bundle
-image: registry.redhat.io/container-native-virtualization/hco-bundle-registry@sha256:2d7b4f8c04d4562029587c4b8e45d4b911ea4e3590c58bf2ecb2b7b238fd0778
-# hco-bundle-registry v4.9.0-266
----
-schema: olm.bundle
-image: registry.redhat.io/container-native-virtualization/hco-bundle-registry@sha256:70e5de00883d02a93d59cbd6268995bf5b3c3116279ab868c89c7dc198a288a4
-# hco-bundle-registry v4.9.1-52
----
-schema: olm.bundle
-image: registry.redhat.io/container-native-virtualization/hco-bundle-registry@sha256:c5da47b16fb1dbfb9c346d3717f471475c6d8d8b7ea260b1aca9f5569d53f26a
-# hco-bundle-registry v4.9.2-27
+image: registry.redhat.io/container-native-virtualization/hco-bundle-registry@sha256:85c56b82f57cc120750d053b6596ccfd45e75560a1baa334aa50c26c778bf406
+# hco-bundle-registry v4.11.7-5
