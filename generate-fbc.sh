@@ -84,7 +84,7 @@ unsetBrew()
 {
 if [[ "$2" == "brew" ]]; then
     sed -i 's|image: brew.registry.redhat.io/container-native-virtualization/hco-bundle-registry|image: registry.redhat.io/container-native-virtualization/hco-bundle-registry|g' "${frag}"/graph.yaml
-    sed -i 's|brew.registry.redhat.io/container-native-virtualization/hco-bundle-registry|registry.redhat.io/container-native-virtualization/hco-bundle-registry|g' "${frag}"/catalog/kubevirt-hyperconverged/catalog.yaml
+    sed -i 's|brew.registry.redhat.io/container-native-virtualization/hco-bundle-registry|registry.redhat.io/container-native-virtualization/hco-bundle-registry|g' "${frag}"/catalog/kubevirt-hyperconverged/catalog.json
 fi
 }
 
@@ -129,14 +129,14 @@ case $cmd in
       exit 1
     fi
     setBrew "${frag}" "$3"
-    "${OPM_CMD}" alpha render-template basic "${frag}"/graph.yaml > "${frag}"/catalog/kubevirt-hyperconverged/catalog.yaml
+    "${OPM_CMD}" alpha render-template basic "${frag}"/graph.yaml > "${frag}"/catalog/kubevirt-hyperconverged/catalog.json
     unsetBrew "${frag}" "$3"
   ;;
   "--render-all")
     for f in ./"v4."*; do
       frag=${f#./}
       setBrew "${frag}" "$2"
-      "${OPM_CMD}" alpha render-template basic "${frag}"/graph.yaml > "${frag}"/catalog/kubevirt-hyperconverged/catalog.yaml
+      "${OPM_CMD}" alpha render-template basic "${frag}"/graph.yaml > "${frag}"/catalog/kubevirt-hyperconverged/catalog.json
       unsetBrew "${frag}" "$2"
     done
   ;;
