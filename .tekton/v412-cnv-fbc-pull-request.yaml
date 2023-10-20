@@ -363,6 +363,8 @@ spec:
         values:
         - "false"
     - name: fbc-validate
+      runAfter:
+      - inspect-image
       params:
       - name: IMAGE_URL
         value: $(tasks.build-container.results.IMAGE_URL)
