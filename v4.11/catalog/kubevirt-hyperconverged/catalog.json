@@ -6149,7 +6149,7 @@
     "schema": "olm.bundle",
     "name": "kubevirt-hyperconverged-operator.v4.11.7",
     "package": "kubevirt-hyperconverged",
-    "image": "registry.redhat.io/container-native-virtualization/hco-bundle-registry@sha256:3f7c19b68af819abebe219a3ec531df3b2e380d0103d2c57b97985f9f0fb125a",
+    "image": "registry.redhat.io/container-native-virtualization/hco-bundle-registry@sha256:278216841052f8565cce3c3b51abf5d25995b3e83ba9baca0e95a64e5fb9d869",
     "properties": [
         {
             "type": "olm.gvk",
@@ -6256,8 +6256,18 @@
                     "certified": "true",
                     "console.openshift.io/disable-operand-delete": "true",
                     "containerImage": "registry.redhat.io/container-native-virtualization/hyperconverged-cluster-operator@sha256:b0e822cb03d6e60643fa3144bb1a3fb162a93d9eb65a77b455d4dd0048a9e9e1",
-                    "createdAt": "2023-10-19 23:57:33",
+                    "createdAt": "2023-10-20 05:47:10",
                     "description": "Creates and maintains an OpenShift Virtualization Deployment",
+                    "features.operators.openshift.io/cnf": "false",
+                    "features.operators.openshift.io/cni": "true",
+                    "features.operators.openshift.io/csi": "true",
+                    "features.operators.openshift.io/disconnected": "true",
+                    "features.operators.openshift.io/fips-compliant": "true",
+                    "features.operators.openshift.io/proxy-aware": "true",
+                    "features.operators.openshift.io/tls-profiles": "true",
+                    "features.operators.openshift.io/token-auth-aws": "false",
+                    "features.operators.openshift.io/token-auth-azure": "false",
+                    "features.operators.openshift.io/token-auth-gcp": "false",
                     "operatorframework.io/initialization-resource": "{\"apiVersion\":\"hco.kubevirt.io/v1beta1\",\"kind\":\"HyperConverged\",\"metadata\":{\"annotations\":{\"deployOVS\":\"false\"},\"name\":\"kubevirt-hyperconverged\",\"namespace\":\"openshift-cnv\"},\"spec\":{}}",
                     "operatorframework.io/suggested-namespace": "openshift-cnv",
                     "operators.openshift.io/infrastructure-features": "[\"disconnected\",\"proxy-aware\",\"fips\",\"sno\"]",
@@ -6442,7 +6452,7 @@
     "relatedImages": [
         {
             "name": "",
-            "image": "registry.redhat.io/container-native-virtualization/hco-bundle-registry@sha256:3f7c19b68af819abebe219a3ec531df3b2e380d0103d2c57b97985f9f0fb125a"
+            "image": "registry.redhat.io/container-native-virtualization/hco-bundle-registry@sha256:278216841052f8565cce3c3b51abf5d25995b3e83ba9baca0e95a64e5fb9d869"
         },
         {
             "name": "registry.redhat.io/container-native-virtualization/bridge-marker:v4.11.7-4",
