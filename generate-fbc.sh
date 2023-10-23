@@ -84,7 +84,7 @@ unsetBrew()
 {
 if [[ "$2" == "brew" ]]; then
     sed -i 's|image: brew.registry.redhat.io/container-native-virtualization/hco-bundle-registry|image: registry.redhat.io/container-native-virtualization/hco-bundle-registry|g' "${frag}"/graph.yaml
-    #sed -i 's|brew.registry.redhat.io/container-native-virtualization/hco-bundle-registry|registry.redhat.io/container-native-virtualization/hco-bundle-registry|g' "${frag}"/catalog/kubevirt-hyperconverged/catalog.json
+    sed -i 's|brew.registry.redhat.io/container-native-virtualization/hco-bundle-registry|registry.redhat.io/container-native-virtualization/hco-bundle-registry|g' "${frag}"/catalog/kubevirt-hyperconverged/catalog.json
 fi
 }
 
