@@ -35,7 +35,7 @@ components:
     image:
       imageName: ""
       dockerfile:
-        uri: $1/catalog.Dockerfile
+        uri: catalog.Dockerfile
         buildContext: ""
   - name: kubernetes
     kubernetes:
