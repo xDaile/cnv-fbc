@@ -37,6 +37,8 @@ entries:
     skipRange: '>=4.13.5 <4.14.0'
   - name: kubevirt-hyperconverged-operator.v4.14.1
     replaces: kubevirt-hyperconverged-operator.v4.14.0
+    skips:
+      - kubevirt-hyperconverged-operator.v4.13.6
   - name: kubevirt-hyperconverged-operator.v4.15.0
     replaces: kubevirt-hyperconverged-operator.v4.14.1
     skipRange: '>=4.14.2 <4.15.0'
