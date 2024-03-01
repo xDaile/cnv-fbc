@@ -55,10 +55,13 @@ EOT
 
 dockerfile()
 {
-  cat <<EOT > "$1"/catalog.Dockerfile
+    suffix="-rhel9"
+    if [[ "$1" =~ ^v4.1(1|2|3|4)$ ]]; then suffix="" ; fi
+
+    cat <<EOT > "$1"/catalog.Dockerfile
 # The base image is expected to contain
 # /bin/opm (with a serve subcommand) and /bin/grpc_health_probe
-FROM registry.redhat.io/openshift4/ose-operator-registry:$1
+FROM registry.redhat.io/openshift4/ose-operator-registry${suffix}:$1
 
 # Configure the entrypoint and command
 ENTRYPOINT ["/bin/opm"]
