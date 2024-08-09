@@ -16,8 +16,6 @@ jobs:
   build:
     name: Compare with production
     runs-on: ubuntu-latest
-    env:
-      OPM_VERSION: v1.39.0
 
     steps:
       - uses: actions/checkout@v3
@@ -28,18 +26,19 @@ jobs:
           AUTH_FILE_CONTENT: ${{ secrets.RREGISTRY_AUTH }}
           REGISTRY_AUTH_FILE: ./auth.json
 
-      - name: Get opm client
+      - name: Get opm clients
         run: |
-          wget https://github.com/operator-framework/operator-registry/releases/download/${OPM_VERSION}/linux-amd64-opm
-          chmod +x linux-amd64-opm
+          source opm_versions.sh
+          download_opm_clients
           mkdir -p .docker
           cp auth.json .docker/config.json
 
       - name: Compare with production
-        run: make check-prod
+        run: |
+          export PATH=$(pwd):${PATH}
+          make check-prod
         env:
           REGISTRY_AUTH_FILE: ./auth.json
           SKOPEO_CMD: podman run --rm -v .:/auth quay.io/skopeo/stable:latest
           AUTH_FILE: --authfile=/auth/auth.json
-          OPM_CMD: ./linux-amd64-opm
           DOCKER_CONFIG: .docker/
