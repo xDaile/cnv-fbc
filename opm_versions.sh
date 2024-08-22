@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-declare -A OPM_VERSIONS=(["v4.12"]="v1.27.1" ["v4.13"]="v1.27.1" ["v4.14"]="v1.39.0")
+declare -A OPM_VERSIONS=(["v4.12"]="v1.27.1" ["v4.13"]="v1.27.1" ["v4.14"]="v1.27.1" ["v4.15"]="v1.27.1" ["v4.16"]="v1.27.1" ["v4.17"]="v1.39.0" )
 DEFAULT_OPM_VERSION="v1.39.0"
 
 download_opm_clients () {
