@@ -5,8 +5,8 @@ set -e
 SKOPEO_CMD=${SKOPEO_CMD:-skopeo}
 AUTH_FILE=${AUTH_FILE:-}
 
-# shellcheck source=opm_versions.sh
-source opm_versions.sh
+# shellcheck source=opm_utils.sh
+source opm_utils.sh
 
 package_name="kubevirt-hyperconverged"
 
@@ -116,10 +116,17 @@ case $cmd in
     case $yqOrjq in
       "yq")
         touch "${frag}"/graph.yaml
-	$(opm_per_ocp_minor "${frag}") render "$from" -o yaml | yq "select( .package == \"$package_name\" or .name == \"$package_name\")" | yq 'select(.schema == "olm.bundle") = {"schema": .schema, "image": .image}' | yq 'select(.schema == "olm.package") = {"schema": .schema, "name": .name, "defaultChannel": .defaultChannel}' > "${frag}"/graph.yaml
+# shellcheck disable=SC2086
+	./opm render $(opm_alpha_params "${frag}") "$from" -o yaml | yq "select( .package == \"$package_name\" or .name == \"$package_name\")" | \
+                                                             	                                                        yq 'select(.schema == "olm.bundle") = {"schema": .schema, "image": .image}' | \
+                                                             	                                                        yq 'select(.schema == "olm.package") = {"schema": .schema, "name": .name, "defaultChannel": .defaultChannel}' | \
+                                                             	                                                        yq '[.]' | \
+                                                             	                                                        yq '{"schema": "olm.template.basic", "name": "kubevirt-hyperconverged", "entries":.}' | \
+                                                             	                                                        sed 's|^  #|    #|g' > "${frag}/graph.yaml"
       ;;
       "jq")
-        $(opm_per_ocp_minor "${frag}") render "$from" | jq "select( .package == \"$package_name\" or .name == \"$package_name\")" | jq 'if (.schema == "olm.bundle") then {schema: .schema, image: .image} else (if (.schema == "olm.package") then {schema: .schema, name: .name, defaultChannel: .defaultChannel} else . end) end' > "${frag}"/graph.json
+# shellcheck disable=SC2086
+        ./opm render $(opm_alpha_params "${frag}") "$from" | jq "select( .package == \"$package_name\" or .name == \"$package_name\")" | jq 'if (.schema == "olm.bundle") then {schema: .schema, image: .image} else (if (.schema == "olm.package") then {schema: .schema, name: .name, defaultChannel: .defaultChannel} else . end) end' > "${frag}"/graph.json
       ;;
       *)
         echo "please specify if yq or jq"
@@ -143,16 +150,22 @@ case $cmd in
       echo "Please specify OCP minor, eg: v4.12"
       exit 1
     fi
+    echo "rendering catalog for ${frag}..."
     setBrew "${frag}" "$3"
-    $(opm_per_ocp_minor "${frag}") alpha render-template basic "${frag}"/graph.yaml > "${frag}"/catalog/kubevirt-hyperconverged/catalog.json
+# shellcheck disable=SC2086
+    ./opm alpha render-template basic $(opm_alpha_params "${frag}") "${frag}"/graph.yaml > "${frag}"/catalog/kubevirt-hyperconverged/catalog.json
     unsetBrew "${frag}" "$3"
+    echo "rendered catalog for ${frag}."
   ;;
   "--render-all")
     for f in ./"v4."*; do
       frag=${f#./}
+      echo "rendering catalog for ${frag}..."
       setBrew "${frag}" "$2"
-      $(opm_per_ocp_minor "${frag}") alpha render-template basic "${frag}"/graph.yaml > "${frag}"/catalog/kubevirt-hyperconverged/catalog.json
+# shellcheck disable=SC2086
+      ./opm alpha render-template basic $(opm_alpha_params "${frag}") "${frag}"/graph.yaml > "${frag}"/catalog/kubevirt-hyperconverged/catalog.json
       unsetBrew "${frag}" "$2"
+      echo "rendered catalog for ${frag}."
     done
   ;;
   "--comment-graph")
@@ -164,14 +177,14 @@ case $cmd in
     fi
     setBrew "${frag}" "$3"
     sed -i "/# hco-bundle-registry v4\./d" "$frag"/graph.yaml
-    grep -E "^image: [brew\.]*registry.redhat.io/container-native-virtualization/hco-bundle-registry[-rhel9]*@sha256" "$frag"/graph.yaml | while read -r line ; do
+    grep -E "image: [brew\.]*registry.redhat.io/container-native-virtualization/hco-bundle-registry[-rhel9]*@sha256" "$frag"/graph.yaml | while read -r line ; do
       image=${line/image: /}
       echo "Processing $image"
       # shellcheck disable=SC2086
-      url=$(${SKOPEO_CMD} inspect --no-tags ${AUTH_FILE} docker://"$image" | grep "\"url\": ")
+      url=$(${SKOPEO_CMD} inspect --no-tags ${AUTH_FILE} "docker://$image" | grep "\"url\": ")
       tag1=${url/*\/images\/}
       tag=${tag1/\",/}
-      sed -i "s|$image|$image\n# hco-bundle-registry $tag|g" "$frag"/graph.yaml
+      sed -i -E "s|^( *)(image: )$image|\1\2$image\n\1# hco-bundle-registry $tag|g" "$frag"/graph.yaml
     done
     unsetBrew "${frag}" "$3"
   ;;
@@ -180,14 +193,14 @@ case $cmd in
       frag=${f#./}
       setBrew "${frag}" "$2"
       sed -i "/# hco-bundle-registry v4\./d" "$frag"/graph.yaml
-      grep -E "^image: [brew\.]*registry.redhat.io/container-native-virtualization/hco-bundle-registry[-rhel9]*@sha256" "$frag"/graph.yaml | while read -r line ; do
+      grep -E "image: [brew\.]*registry.redhat.io/container-native-virtualization/hco-bundle-registry[-rhel9]*@sha256" "$frag"/graph.yaml | while read -r line ; do
         image=${line/image: /}
         echo "Processing $image"
 	# shellcheck disable=SC2086
         url=$(${SKOPEO_CMD} inspect --no-tags ${AUTH_FILE} docker://"$image" | grep "\"url\": ")
         tag1=${url/*\/images\/}
         tag=${tag1/\",/}
-        sed -i "s|$image|$image\n# hco-bundle-registry $tag|g" "$frag"/graph.yaml
+        sed -i -E "s|^( *)(image: )$image|\1\2$image\n\1# hco-bundle-registry $tag|g" "$frag"/graph.yaml
       done
       unsetBrew "${frag}" "$2"
     done
