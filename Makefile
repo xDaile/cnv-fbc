@@ -1,12 +1,12 @@
 sanity:
 	./generate-fbc.sh --comment-graph-all
 	./generate-fbc.sh --render-all
-	git diff --exit-code
+	git diff --exit-code --quiet
 
 sanity-brew:
 	./generate-fbc.sh --comment-graph-all brew
 	./generate-fbc.sh --render-all brew
-	git diff --exit-code
+	git diff --exit-code --quiet
 
 check-prod:
 	for v in $$(git diff --name-only --name-only HEAD HEAD~1 | grep graph.yaml); do echo "Comparing $${v%/*} with prod"; ./generate-fbc.sh --init-basic "$${v%/*}" yq; done
