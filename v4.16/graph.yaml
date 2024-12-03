@@ -62,6 +62,7 @@ entries:
         replaces: kubevirt-hyperconverged-operator.v4.16.3
       - name: kubevirt-hyperconverged-operator.v4.16.5
         replaces: kubevirt-hyperconverged-operator.v4.16.4
+        skipRange: '>=4.15.7 <4.16.0'
     name: stable
     package: kubevirt-hyperconverged
     schema: olm.channel
