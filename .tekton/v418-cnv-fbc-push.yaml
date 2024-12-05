@@ -28,14 +28,7 @@ spec:
   - name: path-context
     value: v4.18
   pipelineRef:
-    params:
-    - name: url
-      value: https://github.com/openshift-cnv/cnv-fbc.git
-    - name: revision
-      value: feat/pipelineRef
-    - name: pathInRepo
-      value: .tekton/fbc-pipeline.yaml
-    resolver: git
+    name: fbc-pipeline
   taskRunTemplate: {}
   workspaces:
   - name: workspace
