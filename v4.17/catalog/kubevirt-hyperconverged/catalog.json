@@ -9,8 +9,8 @@
     "package": "kubevirt-hyperconverged",
     "entries": [
         {
-            "name": "kubevirt-hyperconverged-operator.v4.99.0-0.1736398671",
-            "skipRange": "<4.99.0-0.1736398671"
+            "name": "kubevirt-hyperconverged-operator.v4.99.0-0.1736420136",
+            "skipRange": "<4.99.0-0.1736420136"
         }
     ]
 }
@@ -12321,9 +12321,9 @@
 }
 {
     "schema": "olm.bundle",
-    "name": "kubevirt-hyperconverged-operator.v4.99.0-0.1736398671",
+    "name": "kubevirt-hyperconverged-operator.v4.99.0-0.1736420136",
     "package": "kubevirt-hyperconverged",
-    "image": "registry.redhat.io/container-native-virtualization/hco-bundle-registry-rhel9@sha256:dedf7e750d960b90f8c2ca26dd567d5ac4a8f527c60f85d57faf30b1a19c18fc",
+    "image": "registry.redhat.io/container-native-virtualization/hco-bundle-registry-rhel9@sha256:fae432858bfb996d6246e0d3bea90219e8a6f991a83656386aecf0dd1ab45cd5",
     "properties": [
         {
             "type": "olm.gvk",
@@ -12417,7 +12417,7 @@
             "type": "olm.package",
             "value": {
                 "packageName": "kubevirt-hyperconverged",
-                "version": "4.99.0-0.1736398671"
+                "version": "4.99.0-0.1736420136"
             }
         },
         {
@@ -12429,8 +12429,8 @@
                     "categories": "OpenShift Optional",
                     "certified": "true",
                     "console.openshift.io/disable-operand-delete": "true",
-                    "containerImage": "registry.redhat.io/container-native-virtualization/hyperconverged-cluster-operator-rhel9@sha256:f405f73676cf080b044efa44035d7de13394873bf7a6554b5cc59ebab6d1e496",
-                    "createdAt": "2025-01-09 04:58:31",
+                    "containerImage": "registry.redhat.io/container-native-virtualization/hyperconverged-cluster-operator-rhel9@sha256:14381bd8db81e7864200b2b72648418e9859706d9f9097198947e0386da4cbb1",
+                    "createdAt": "2025-01-09 10:56:20",
                     "description": "Creates and maintains an OpenShift Virtualization Deployment",
                     "features.operators.openshift.io/cnf": "false",
                     "features.operators.openshift.io/cni": "true",
@@ -12446,12 +12446,12 @@
                     "operatorframework.io/initialization-resource": "{\"apiVersion\":\"hco.kubevirt.io/v1beta1\",\"kind\":\"HyperConverged\",\"metadata\":{\"annotations\":{\"deployOVS\":\"false\"},\"name\":\"kubevirt-hyperconverged\",\"namespace\":\"openshift-cnv\"},\"spec\":{}}",
                     "operatorframework.io/suggested-namespace": "openshift-cnv",
                     "operators.openshift.io/infrastructure-features": "[\"disconnected\",\"proxy-aware\",\"fips\",\"sno\"]",
-                    "operators.openshift.io/must-gather-image": "registry.redhat.io/container-native-virtualization/cnv-must-gather-rhel9@sha256:25a453aebd2eee96a8ba3150c90e25f6aeabdf9501e9183daa9f5f203e8f151d",
+                    "operators.openshift.io/must-gather-image": "registry.redhat.io/container-native-virtualization/cnv-must-gather-rhel9@sha256:cab40025a309f5845df99e4eb0ee1193790a241ee2576f4a41d6f09b1f064a03",
                     "operators.openshift.io/valid-subscription": "[\"OpenShift Kubernetes Engine\", \"OpenShift Container Platform\", \"OpenShift Platform Plus\"]",
                     "operators.operatorframework.io/internal-objects": "[\"networkaddonsconfigs.networkaddonsoperator.network.kubevirt.io\",\"kubevirts.kubevirt.io\",\"ssps.ssp.kubevirt.io\",\"ssps.ssp.kubevirt.io\",\"cdis.cdi.kubevirt.io\",\"aaqs.aaq.kubevirt.io\"]",
                     "repository": "https://github.com/kubevirt/hyperconverged-cluster-operator",
                     "support": "Red Hat",
-                    "test-images-nvrs": "kubevirt-ssp-operator-test-rhel9:v4.99.0-154,hyperconverged-cluster-operator-test-rhel9:v4.99.0-39,kubevirt-common-instancetypes-test-rhel9:v4.99.0-59,kubevirt-tekton-tasks-test-rhel9:v4.99.0-59"
+                    "test-images-nvrs": "kubevirt-ssp-operator-test-rhel9:v4.99.0-154,hyperconverged-cluster-operator-test-rhel9:v4.99.0-41,kubevirt-common-instancetypes-test-rhel9:v4.99.0-59,kubevirt-tekton-tasks-test-rhel9:v4.99.0-59"
                 },
                 "apiServiceDefinitions": {},
                 "crdDescriptions": {
@@ -12635,7 +12635,7 @@
     "relatedImages": [
         {
             "name": "",
-            "image": "registry.redhat.io/container-native-virtualization/hco-bundle-registry-rhel9@sha256:dedf7e750d960b90f8c2ca26dd567d5ac4a8f527c60f85d57faf30b1a19c18fc"
+            "image": "registry.redhat.io/container-native-virtualization/hco-bundle-registry-rhel9@sha256:fae432858bfb996d6246e0d3bea90219e8a6f991a83656386aecf0dd1ab45cd5"
         },
         {
             "name": "registry.redhat.io/container-native-virtualization/aaq-controller-rhel9:v4.99.0-57",
@@ -12662,8 +12662,8 @@
             "image": "registry.redhat.io/container-native-virtualization/cnv-containernetworking-plugins-rhel9@sha256:faeda5643cbc82456abc7e90de8994d5cc804c62210dad8bbbd5409c40987d87"
         },
         {
-            "name": "registry.redhat.io/container-native-virtualization/cnv-must-gather-rhel9:v4.99.0-75",
-            "image": "registry.redhat.io/container-native-virtualization/cnv-must-gather-rhel9@sha256:25a453aebd2eee96a8ba3150c90e25f6aeabdf9501e9183daa9f5f203e8f151d"
+            "name": "registry.redhat.io/container-native-virtualization/cnv-must-gather-rhel9:v4.99.0-76",
+            "image": "registry.redhat.io/container-native-virtualization/cnv-must-gather-rhel9@sha256:cab40025a309f5845df99e4eb0ee1193790a241ee2576f4a41d6f09b1f064a03"
         },
         {
             "name": "registry.redhat.io/container-native-virtualization/hostpath-csi-driver-rhel9:v4.99.0-53",
@@ -12678,12 +12678,12 @@
             "image": "registry.redhat.io/container-native-virtualization/hostpath-provisioner-rhel9@sha256:f086c803e2d8e626950a0936ba1710bf7f44305ab3098685e7338005193c48fa"
         },
         {
-            "name": "registry.redhat.io/container-native-virtualization/hyperconverged-cluster-operator-rhel9:v4.99.0-155",
-            "image": "registry.redhat.io/container-native-virtualization/hyperconverged-cluster-operator-rhel9@sha256:f405f73676cf080b044efa44035d7de13394873bf7a6554b5cc59ebab6d1e496"
+            "name": "registry.redhat.io/container-native-virtualization/hyperconverged-cluster-operator-rhel9:v4.99.0-157",
+            "image": "registry.redhat.io/container-native-virtualization/hyperconverged-cluster-operator-rhel9@sha256:14381bd8db81e7864200b2b72648418e9859706d9f9097198947e0386da4cbb1"
         },
         {
-            "name": "registry.redhat.io/container-native-virtualization/hyperconverged-cluster-webhook-rhel9:v4.99.0-154",
-            "image": "registry.redhat.io/container-native-virtualization/hyperconverged-cluster-webhook-rhel9@sha256:43913851888de7cc34013c433f3fd8dccb3e6c0cb6de5f311da7ffa2181364b6"
+            "name": "registry.redhat.io/container-native-virtualization/hyperconverged-cluster-webhook-rhel9:v4.99.0-156",
+            "image": "registry.redhat.io/container-native-virtualization/hyperconverged-cluster-webhook-rhel9@sha256:fd90c570d66e12f838ffc23c8e1fe0a9fbce2c4c773dcece896e567ed20b587c"
         },
         {
             "name": "registry.redhat.io/container-native-virtualization/kubemacpool-rhel9:v4.99.0-33",
@@ -12702,8 +12702,8 @@
             "image": "registry.redhat.io/container-native-virtualization/kubevirt-common-instancetypes-rhel9@sha256:d0d6aac174c330848c8b2e3286ab71e0dfda2bfaff2990a8eb4aee3bb65a0e75"
         },
         {
-            "name": "registry.redhat.io/container-native-virtualization/kubevirt-console-plugin-rhel9:v4.99.0-2461",
-            "image": "registry.redhat.io/container-native-virtualization/kubevirt-console-plugin-rhel9@sha256:e8081c3560aaf4d9ef894589c66f33d5922b027ba764a5fd9b3f979658a9c5c1"
+            "name": "registry.redhat.io/container-native-virtualization/kubevirt-console-plugin-rhel9:v4.99.0-2464",
+            "image": "registry.redhat.io/container-native-virtualization/kubevirt-console-plugin-rhel9@sha256:c24c2a0a34c740a8e9e6bf08295f3698d033416615ee6940e0aea2caea445b82"
         },
         {
             "name": "registry.redhat.io/container-native-virtualization/kubevirt-dpdk-checkup-rhel9:v4.99.0-33",
@@ -12762,8 +12762,8 @@
             "image": "registry.redhat.io/container-native-virtualization/pr-helper-rhel9@sha256:8b709ded4780431a1cda47dcc1ff880a5aa3a71d8acf0d9f7394e9219dcc6c15"
         },
         {
-            "name": "registry.redhat.io/container-native-virtualization/sidecar-shim-rhel9:v4.99.0-2532",
-            "image": "registry.redhat.io/container-native-virtualization/sidecar-shim-rhel9@sha256:d32a1c0ccac6dbc451de101007157d6a620a43cb23275f6c28bf16f8f835ca08"
+            "name": "registry.redhat.io/container-native-virtualization/sidecar-shim-rhel9:v4.99.0-2535",
+            "image": "registry.redhat.io/container-native-virtualization/sidecar-shim-rhel9@sha256:981a5592d725efd910fbae2574939ae054111c3823d985c0a13511333dd9394a"
         },
         {
             "name": "registry.redhat.io/container-native-virtualization/virt-api-rhel9:v4.99.0-531",
