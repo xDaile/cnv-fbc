@@ -96,29 +96,6 @@ if [[ "$2" == "brew" ]]; then
 fi
 }
 
-inspectImage()
-{
-RETRIES=3
-DELAY=5
-SUCCESS=false
-
-for attempt in $(seq 1 $RETRIES); do
-    url=$(${SKOPEO_CMD} inspect --no-tags --format "{{.Labels.url}}" docker://"$1" 2>/dev/null) || true
-    if [ -n "$url" ]; then
-        SUCCESS=true
-        break
-    else
-        echo "Failed to inspect image \"$1\" at $attempt try. Retrying in $DELAY seconds..." >&2
-        sleep $DELAY
-    fi
-done
-
-if [ $SUCCESS = false ]; then
-    echo "Failed to retrieve URL after $RETRIES attempts. Exiting." >&2
-    exit 1
-fi
-echo "$url"
-}
 
 cmd="$1"
 case $cmd in
@@ -212,7 +189,7 @@ case $cmd in
       image=${line/image: /}
       echo "Processing $image"
       # shellcheck disable=SC2086
-      url=$(inspectImage $image)
+      url=$(${SKOPEO_CMD} inspect --no-tags --format "{{.Labels.url}}" ${AUTH_FILE} docker://"$image")
       tag=${url/*\/images\/}
       sed -i -E "s|^( *)(image: )$image|\1\2$image\n\1# hco-bundle-registry $tag|g" "$frag"/graph.yaml
     done
@@ -227,7 +204,7 @@ case $cmd in
         image=${line/image: /}
         echo "Processing $image"
 	# shellcheck disable=SC2086
-        url=$(inspectImage $image)
+        url=$(${SKOPEO_CMD} inspect --no-tags --format "{{.Labels.url}}" ${AUTH_FILE} docker://"$image")
         tag=${url/*\/images\/}
         sed -i -E "s|^( *)(image: )$image|\1\2$image\n\1# hco-bundle-registry $tag|g" "$frag"/graph.yaml
       done
