@@ -46,6 +46,7 @@ jobs:
         id: "2"
         if: steps.1.outcome == 'failure'
         run: |
+          sleep 300
           export PATH=$(pwd):${PATH} 
           make sanity-brew
         env:
@@ -59,6 +60,7 @@ jobs:
         id: "3"
         if: steps.1.outcome == 'failure' && steps.2.outcome == 'failure'
         run: |
+          sleep 300
           export PATH=$(pwd):${PATH} 
           make sanity-brew
         env:
