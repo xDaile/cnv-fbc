@@ -30,7 +30,7 @@ jobs:
           cp auth.json .docker/config.json
 
       - name: Do sanity checks N-1
-        id: "1"
+        id: "one"
         run: |
           export PATH=$(pwd):${PATH} 
           make sanity-brew
@@ -43,8 +43,8 @@ jobs:
         continue-on-error: true
 
       - name: Do sanity checks N-2
-        id: "2"
-        if: steps.1.outcome == 'failure'
+        id: "two"
+        if: steps.one.outcome == 'failure'
         run: |
           sleep 300
           export PATH=$(pwd):${PATH} 
@@ -57,8 +57,8 @@ jobs:
           DOCKER_CONFIG: .docker/
         continue-on-error: true
       - name: Do sanity checks N-3
-        id: "3"
-        if: steps.1.outcome == 'failure' && steps.2.outcome == 'failure'
+        id: "three"
+        if: steps.one.outcome == 'failure' && steps.two.outcome == 'failure'
         run: |
           sleep 300
           export PATH=$(pwd):${PATH} 
