@@ -12,11 +12,6 @@
             "name": "kubevirt-hyperconverged-operator.v4.17.6",
             "replaces": "kubevirt-hyperconverged-operator.v4.17.5",
             "skipRange": ">=4.16.6 <4.17.0"
-        },
-        {
-            "name": "kubevirt-hyperconverged-operator.v4.17.7",
-            "replaces": "kubevirt-hyperconverged-operator.v4.17.6",
-            "skipRange": ">=4.16.6 <4.17.0"
         }
     ]
 }
@@ -28,6 +23,18 @@
         {
             "name": "kubevirt-hyperconverged-operator.v4.99.0-0.1723448771",
             "skipRange": "<4.99.0"
+        }
+    ]
+}
+{
+    "schema": "olm.channel",
+    "name": "nightly",
+    "package": "kubevirt-hyperconverged",
+    "entries": [
+        {
+            "name": "kubevirt-hyperconverged-operator.v4.17.7",
+            "replaces": "kubevirt-hyperconverged-operator.v4.17.6",
+            "skipRange": ">=4.16.6 <4.17.0"
         }
     ]
 }
@@ -13996,7 +14003,7 @@
     "schema": "olm.bundle",
     "name": "kubevirt-hyperconverged-operator.v4.17.7",
     "package": "kubevirt-hyperconverged",
-    "image": "registry.redhat.io/container-native-virtualization/hco-bundle-registry-rhel9@sha256:e155588ea27f08a2a81bf214d88a1171063dc88c15ac4fbda72c35ebc17645af",
+    "image": "registry.redhat.io/container-native-virtualization/hco-bundle-registry-rhel9@sha256:50d75066f2e54edf992089117869cd4bbb4d05a5f7f554ba94a80d72f160d28a",
     "properties": [
         {
             "type": "olm.gvk",
@@ -14103,7 +14110,7 @@
                     "certified": "true",
                     "console.openshift.io/disable-operand-delete": "true",
                     "containerImage": "registry.redhat.io/container-native-virtualization/hyperconverged-cluster-operator-rhel9@sha256:56e93a0e5261c4c9e8e71e592cbab3b0011bc48132f68da4d6b49057372aae82",
-                    "createdAt": "2025-03-16 23:18:28",
+                    "createdAt": "2025-03-17 11:25:14",
                     "description": "Creates and maintains an OpenShift Virtualization Deployment",
                     "features.operators.openshift.io/cnf": "false",
                     "features.operators.openshift.io/cni": "true",
@@ -14303,7 +14310,7 @@
     "relatedImages": [
         {
             "name": "",
-            "image": "registry.redhat.io/container-native-virtualization/hco-bundle-registry-rhel9@sha256:e155588ea27f08a2a81bf214d88a1171063dc88c15ac4fbda72c35ebc17645af"
+            "image": "registry.redhat.io/container-native-virtualization/hco-bundle-registry-rhel9@sha256:50d75066f2e54edf992089117869cd4bbb4d05a5f7f554ba94a80d72f160d28a"
         },
         {
             "name": "registry.redhat.io/container-native-virtualization/aaq-controller-rhel9:v4.17.7-2",
@@ -14370,8 +14377,8 @@
             "image": "registry.redhat.io/container-native-virtualization/kubevirt-common-instancetypes-rhel9@sha256:4a2dad2cfd214f904218135864eb517a4e1775ed223a7b46a83b40f2fab1f167"
         },
         {
-            "name": "registry.redhat.io/container-native-virtualization/kubevirt-console-plugin-rhel9:v4.17.7-5",
-            "image": "registry.redhat.io/container-native-virtualization/kubevirt-console-plugin-rhel9@sha256:18168f3e2337274f701ac6b51c71b4543fd8a8fe018c9ea1460b138ae3fd14c9"
+            "name": "registry.redhat.io/container-native-virtualization/kubevirt-console-plugin-rhel9:v4.17.7-6",
+            "image": "registry.redhat.io/container-native-virtualization/kubevirt-console-plugin-rhel9@sha256:0721b902f11ec00ad554a178206b8127d63521512804e875e45211fc5170b04b"
         },
         {
             "name": "registry.redhat.io/container-native-virtualization/kubevirt-dpdk-checkup-rhel9:v4.17.7-1",
@@ -14398,8 +14405,8 @@
             "image": "registry.redhat.io/container-native-virtualization/kubevirt-tekton-tasks-create-datavolume-rhel9@sha256:3ab642cbbf32320b583ab7e1d8b936f2fd8d6e2d7b03dfa105b82682010d45d7"
         },
         {
-            "name": "registry.redhat.io/container-native-virtualization/kubevirt-tekton-tasks-disk-virt-customize-rhel9:v4.17.7-2",
-            "image": "registry.redhat.io/container-native-virtualization/kubevirt-tekton-tasks-disk-virt-customize-rhel9@sha256:cf5fb18b4b16dd2ac9aec5231e850eca07d4584e4b812dea5d8716203d9b4008"
+            "name": "registry.redhat.io/container-native-virtualization/kubevirt-tekton-tasks-disk-virt-customize-rhel9:v4.17.7-3",
+            "image": "registry.redhat.io/container-native-virtualization/kubevirt-tekton-tasks-disk-virt-customize-rhel9@sha256:535cc071f847f505c3618170c599fe34807f1b7f363f932e0e9e4929a4388ad6"
         },
         {
             "name": "registry.redhat.io/container-native-virtualization/kubevirt-template-validator-rhel9:v4.17.7-1",
@@ -14426,12 +14433,12 @@
             "image": "registry.redhat.io/container-native-virtualization/passt-network-binding-plugin-sidecar-rhel9@sha256:73aa2a51791ffd8ec792a3d0872d7df64a7163c0878494140d18321f6ad908b1"
         },
         {
-            "name": "registry.redhat.io/container-native-virtualization/pr-helper-rhel9:v4.17.7-2",
-            "image": "registry.redhat.io/container-native-virtualization/pr-helper-rhel9@sha256:129609214225769eeba1b0e9f1221ba9cd13dd62b3d181ad980795cb9018ee40"
+            "name": "registry.redhat.io/container-native-virtualization/pr-helper-rhel9:v4.17.7-3",
+            "image": "registry.redhat.io/container-native-virtualization/pr-helper-rhel9@sha256:6ff23710c1ea4fa6418d6a93b4b510ec8b7b796d5cc711abce467aa646592195"
         },
         {
-            "name": "registry.redhat.io/container-native-virtualization/sidecar-shim-rhel9:v4.17.7-6",
-            "image": "registry.redhat.io/container-native-virtualization/sidecar-shim-rhel9@sha256:438b0f021efe13222dac65a0853d0578f4ab991f5e8bd801229b74a194798f46"
+            "name": "registry.redhat.io/container-native-virtualization/sidecar-shim-rhel9:v4.17.7-7",
+            "image": "registry.redhat.io/container-native-virtualization/sidecar-shim-rhel9@sha256:fc21dc1c5cfd6b3579625413a7c13b90c26e27a2d761d485194b996c31c3cb7f"
         },
         {
             "name": "registry.redhat.io/container-native-virtualization/virt-api-rhel9:v4.17.7-2",
