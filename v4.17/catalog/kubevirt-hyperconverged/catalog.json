@@ -37,8 +37,7 @@
     "entries": [
         {
             "name": "kubevirt-hyperconverged-operator.v4.17.8",
-            "replaces": "kubevirt-hyperconverged-operator.v4.17.7",
-            "skipRange": ">=4.17.5 <4.17.8"
+            "replaces": "kubevirt-hyperconverged-operator.v4.17.7"
         }
     ]
 }
@@ -161,6 +160,11 @@
         {
             "name": "kubevirt-hyperconverged-operator.v4.17.5",
             "replaces": "kubevirt-hyperconverged-operator.v4.17.4",
+            "skipRange": ">=4.16.6 <4.17.0"
+        },
+        {
+            "name": "kubevirt-hyperconverged-operator.v4.17.7",
+            "replaces": "kubevirt-hyperconverged-operator.v4.17.5",
             "skipRange": ">=4.16.6 <4.17.0"
         }
     ]
