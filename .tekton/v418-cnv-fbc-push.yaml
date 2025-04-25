@@ -29,7 +29,8 @@ spec:
     value: v4.18
   pipelineRef:
     name: fbc-pipeline
-  taskRunTemplate: {}
+  taskRunTemplate:
+    serviceAccountName: build-pipeline-v418-cnv-fbc
   workspaces:
   - name: workspace
     volumeClaimTemplate:
