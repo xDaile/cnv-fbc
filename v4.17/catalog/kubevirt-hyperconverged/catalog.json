@@ -39,6 +39,11 @@
         {
             "name": "kubevirt-hyperconverged-operator.v4.17.12",
             "replaces": "kubevirt-hyperconverged-operator.v4.17.11"
+        },
+        {
+            "name": "kubevirt-hyperconverged-operator.v4.17.13",
+            "replaces": "kubevirt-hyperconverged-operator.v4.17.12",
+            "skipRange": ">=4.17.11 <4.17.13"
         }
     ]
 }
@@ -50,18 +55,6 @@
         {
             "name": "kubevirt-hyperconverged-operator.v4.99.0-0.1723448771",
             "skipRange": "<4.99.0"
-        }
-    ]
-}
-{
-    "schema": "olm.channel",
-    "name": "nightly",
-    "package": "kubevirt-hyperconverged",
-    "entries": [
-        {
-            "name": "kubevirt-hyperconverged-operator.v4.17.13",
-            "replaces": "kubevirt-hyperconverged-operator.v4.17.12",
-            "skipRange": ">=4.17.11 <4.17.13"
         }
     ]
 }
