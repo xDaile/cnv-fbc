@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-DEFAULT_OPM_VERSION="v1.51.0"
+DEFAULT_OPM_VERSION="v1.55.0"
 OPM_VERSION=${OPM_VERSION:-"${DEFAULT_OPM_VERSION}"}
 
 download_opm_client() {
