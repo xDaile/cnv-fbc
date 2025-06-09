@@ -6,6 +6,7 @@ metadata:
     build.appstudio.redhat.com/commit_sha: '{{revision}}'
     build.appstudio.redhat.com/pull_request_number: '{{pull_request_number}}'
     build.appstudio.redhat.com/target_branch: '{{target_branch}}'
+    pipelinesascode.tekton.dev/cancel-in-progress: "true"
     pipelinesascode.tekton.dev/max-keep-runs: "3"
     pipelinesascode.tekton.dev/on-cel-expression: event == "pull_request" && target_branch
       == "main" && ( "v4.19/***".pathChanged() || ".tekton/v419-cnv-fbc-pull-request.yaml".pathChanged()
@@ -27,6 +28,9 @@ spec:
     value: quay.io/redhat-user-workloads/cnv-fbc-tenant/v419-cnv-fbc:on-pr-{{revision}}
   - name: image-expires-after
     value: 5d
+  - name: build-platforms
+    value:
+    - linux/x86_64
   - name: dockerfile
     value: catalog.Dockerfile
   - name: path-context
@@ -36,17 +40,6 @@ spec:
   taskRunTemplate:
     serviceAccountName: build-pipeline-v419-cnv-fbc
   workspaces:
-  - name: workspace
-    volumeClaimTemplate:
-      metadata:
-        creationTimestamp: null
-      spec:
-        accessModes:
-        - ReadWriteOnce
-        resources:
-          requests:
-            storage: 1Gi
-      status: {}
   - name: git-auth
     secret:
       secretName: '{{ git_auth_secret }}'

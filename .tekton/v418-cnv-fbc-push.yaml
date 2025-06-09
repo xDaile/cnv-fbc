@@ -5,6 +5,7 @@ metadata:
     build.appstudio.openshift.io/repo: https://github.com/openshift-cnv/cnv-fbc?rev={{revision}}
     build.appstudio.redhat.com/commit_sha: '{{revision}}'
     build.appstudio.redhat.com/target_branch: '{{target_branch}}'
+    pipelinesascode.tekton.dev/cancel-in-progress: "false"
     pipelinesascode.tekton.dev/max-keep-runs: "3"
     pipelinesascode.tekton.dev/on-cel-expression: |
       event == "push" && target_branch == "main" && ("v4.18/*".pathChanged() || ".tekton/v418-cnv-fbc-push.yaml".pathChanged())
@@ -23,6 +24,9 @@ spec:
     value: '{{revision}}'
   - name: output-image
     value: quay.io/redhat-user-workloads/cnv-fbc-tenant/v418-cnv-fbc:{{revision}}
+  - name: build-platforms
+    value:
+    - linux/x86_64
   - name: dockerfile
     value: catalog.Dockerfile
   - name: path-context
@@ -32,17 +36,6 @@ spec:
   taskRunTemplate:
     serviceAccountName: build-pipeline-v418-cnv-fbc
   workspaces:
-  - name: workspace
-    volumeClaimTemplate:
-      metadata:
-        creationTimestamp: null
-      spec:
-        accessModes:
-        - ReadWriteOnce
-        resources:
-          requests:
-            storage: 1Gi
-      status: {}
   - name: git-auth
     secret:
       secretName: '{{ git_auth_secret }}'
