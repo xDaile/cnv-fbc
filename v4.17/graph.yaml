@@ -35,9 +35,6 @@ entries:
       - name: kubevirt-hyperconverged-operator.v4.17.16
         replaces: kubevirt-hyperconverged-operator.v4.17.15
         skipRange: '>=4.17.11 <4.17.16'
-      - name: kubevirt-hyperconverged-operator.v4.17.17
-        replaces: kubevirt-hyperconverged-operator.v4.17.16
-        skipRange: '>=4.17.11 <4.17.17'
     name: candidate
     package: kubevirt-hyperconverged
     schema: olm.channel
@@ -233,5 +230,12 @@ entries:
     image: registry.redhat.io/container-native-virtualization/hco-bundle-registry-rhel9@sha256:a32214d166ee692a4cae917fe97e0535a4a696155e1c878ae5335c77dadef0df
     # hco-bundle-registry v4.99.0.rhel9-993
   - schema: olm.bundle
-    image: registry.redhat.io/container-native-virtualization/hco-bundle-registry-rhel9@sha256:1a5fbd79cc8868ce58f6c5a4f81604e8195a0c4129f89b1803308c5f5e7a0e5a
-    # hco-bundle-registry v4.17.17.rhel9-5
+    image: registry.redhat.io/container-native-virtualization/hco-bundle-registry-rhel9@sha256:26342fbce4aace66eb2fa6a6c3fb7ec5445dab7c3e728062f01481f8d0254208
+    # hco-bundle-registry v4.17.17.rhel9-6
+  - entries:
+      - name: kubevirt-hyperconverged-operator.v4.17.17
+        replaces: kubevirt-hyperconverged-operator.v4.17.16
+        skipRange: '>=4.17.11 <4.17.17'
+    name: nightly
+    package: kubevirt-hyperconverged
+    schema: olm.channel
