@@ -108,10 +108,6 @@ spec:
       set of values is determined by the configuration of the multi-platform-controller.
     name: build-platforms
     type: array
-  - default: "false"
-    description: Skip fips checks against the images
-    name: skip-fips-checks
-    type: string
   results:
   - description: ""
     name: IMAGE_URL
@@ -383,10 +379,6 @@ spec:
       resolver: bundles
     when:
     - input: $(params.skip-checks)
-      operator: in
-      values:
-      - "false"
-    - input: $(params.skip-fips-checks)
       operator: in
       values:
       - "false"
