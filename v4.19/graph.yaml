@@ -6,6 +6,8 @@ entries:
     defaultChannel: stable
   - entries:
       - name: kubevirt-hyperconverged-operator.v4.19.1
+      - name: kubevirt-hyperconverged-operator.v4.19.2
+        replaces: kubevirt-hyperconverged-operator.v4.19.1
     name: candidate
     package: kubevirt-hyperconverged
     schema: olm.channel
@@ -194,9 +196,3 @@ entries:
   - schema: olm.bundle
     image: registry.redhat.io/container-native-virtualization/hco-bundle-registry-rhel9@sha256:667af2fb04d4368763516fc188def960bdd9e834c05cea4d57c069c9b14ff5bc
     # hco-bundle-registry v4.19.2.rhel9-16
-  - entries:
-      - name: kubevirt-hyperconverged-operator.v4.19.2
-        replaces: kubevirt-hyperconverged-operator.v4.19.1
-    name: nightly
-    package: kubevirt-hyperconverged
-    schema: olm.channel
